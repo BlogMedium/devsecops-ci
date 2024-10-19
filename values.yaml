@@ -1,0 +1,17 @@
+controller:
+  serviceType: NodePort
+  resources:
+    requests:
+      cpu: "500m"
+      memory: "512Mi"
+    limits:
+      cpu: "2000m"
+      memory: "4096Mi"
+  volumeMounts:
+    - mountPath: /var/jenkins_home
+      name: jenkins-volume
+persistence:
+  enabled: true
+  existingClaim: jenkins-pvc
+  size: 10Gi
+  storageClass: jenkins-storage-class
